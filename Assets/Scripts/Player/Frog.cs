@@ -49,14 +49,19 @@ namespace Player
             
             // Rotate the player in the movement direction.
             this.facing = this.direction;
-            float angle = Mathf.Atan2(this.facing.y, this.facing.x) * Mathf.Rad2Deg;
-            //Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
-            //transform.rotation = targetRotation;
             
             //Check if there's a collider in front of the player.
             this.moving = CheckCanMove();
         }
-    
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            if ((this.collisionMask.value & (1 << other.gameObject.layer)) != 0)
+            {
+                
+            }
+        }
+        
         public void OnInteract(InputAction.CallbackContext context)
         {
             if (!context.started) return;
@@ -65,16 +70,10 @@ namespace Player
             
             Interactable interactable = hit.collider.gameObject.GetComponent<Interactable>();
             if(interactable == null) return;
-                
+            
             interactable.OnInteract(this);
         }
-
-        private void Update()
-        {
-            Vector2 position = this.transform.position;
-            Debug.DrawRay(new Vector3(position.x, position.y, 1f), new Vector3(this.facing.x, this.facing.y, 1f), Color.red);
-        }
-
+        
         private RaycastHit2D RaycastForward()
         {
             Vector2 position = this.transform.position;
@@ -105,7 +104,7 @@ namespace Player
         }
         
         // Update is called once per frame
-        void FixedUpdate()
+        private void FixedUpdate()
         {
             if (Vector2.Distance(this.rig.position, this.targetPosition) < this.gridThreshold)
             {
