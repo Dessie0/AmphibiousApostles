@@ -129,22 +129,6 @@ MonoBehaviour:
     m_ActionId: 367b2c04-07ec-4188-ab77-39b6928e14c4
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 954199473818018310}
-        m_TargetAssemblyTypeName: Player.Frog, Assembly-CSharp
-        m_MethodName: OnInteract
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: a90eceeb-c2af-49e0-b527-d65040b50c3c
-    m_ActionName: Player/Interact[/Mouse/leftButton]
-  - m_PersistentCalls:
       m_Calls: []
     m_ActionId: 66c2624e-a105-4e37-9450-6e4e74d1ffee
     m_ActionName: UI/Navigate[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
@@ -184,9 +168,33 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 12b4a245-2e2e-4291-b549-21d19c469f54
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b79eada4-9863-4a5f-b6aa-0482bde0198e
+    m_ActionName: WaterFrog/Move[/Keyboard/upArrow,/Keyboard/downArrow,/Keyboard/leftArrow,/Keyboard/rightArrow]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 954199473818018310}
+        m_TargetAssemblyTypeName: Player.Frog, Assembly-CSharp
+        m_MethodName: OnInteract
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9621eca6-cd44-4ba6-bd1d-6d3edbaced28
+    m_ActionName: TadpoleFrog/Interact[/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 7c0a751e-1beb-4fa6-b7dc-b8754254b627
+    m_ActionName: WaterFrog/Interact[/Mouse/leftButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: TadpoleFrog
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!61 &2989167866469645635

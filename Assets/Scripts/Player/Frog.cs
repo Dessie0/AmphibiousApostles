@@ -1,11 +1,8 @@
 using System;
-using System.Runtime.CompilerServices;
 using Interactables;
 using Unity.VisualScripting;
-using UnityEditor.TerrainTools;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Vector2 = UnityEngine.Vector2;
 
 namespace Player
 {
@@ -23,11 +20,19 @@ namespace Player
         private Vector2 targetPosition;
     
         private bool moving;
-    
+
+        private PlayerInput input;
+        
         // Start is called before the first frame update
         void Start()
         {
             this.targetPosition = this.GetPosition();
+            this.input = this.GetComponent<PlayerInput>();
+
+            if (this.input == null)
+            {
+                throw new Exception("Cannot find PlayerInput component.");
+            }
         }
 
         public void OnMove(InputAction.CallbackContext context)
@@ -39,7 +44,10 @@ namespace Player
             this.RestrictDiagonal();
             
             // Rotate the player in the movement direction.
-            this.facing = this.direction;
+            if (!context.canceled)
+            {
+                this.facing = this.direction;
+            }
             
             //Check if there's a collider in front of the player.
             this.moving = CheckCanMove();
