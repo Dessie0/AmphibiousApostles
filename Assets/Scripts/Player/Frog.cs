@@ -50,8 +50,8 @@ namespace Player
             // Rotate the player in the movement direction.
             this.facing = this.direction;
             float angle = Mathf.Atan2(this.facing.y, this.facing.x) * Mathf.Rad2Deg;
-            Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
-            transform.rotation = targetRotation;
+            //Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            //transform.rotation = targetRotation;
             
             //Check if there's a collider in front of the player.
             this.moving = CheckCanMove();
