@@ -7,15 +7,15 @@ namespace Interactables
     {
         public override void OnInteract(Frog frog)
         {
-            Debug.Log("Interacted by " + frog);
-            
             switch (frog)
             {
                 case WaterFrog waterFrog:
                     waterFrog.water = waterFrog.maxWater;
                     break;
                 case TadpoleFrog tadpoleFrog:
-                    //TODO Add timer 
+                    Timer timer = FindObjectOfType<Timer>();
+                    timer.AddSeconds(30f);
+                    
                     break;
             }
         }
