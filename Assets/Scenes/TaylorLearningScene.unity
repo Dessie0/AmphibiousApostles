@@ -227,6 +227,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: TadpoleFrog
       objectReference: {fileID: 0}
+    - target: {fileID: 6596471436961880584, guid: 97f64c5df5018ee4b914113a762e01c4, type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6596471436961880584, guid: 97f64c5df5018ee4b914113a762e01c4, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 213490017
+      objectReference: {fileID: 0}
     - target: {fileID: 7468533191891432104, guid: 97f64c5df5018ee4b914113a762e01c4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 46.5
@@ -352,7 +360,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1752932025
-  m_SortingLayer: -7
+  m_SortingLayer: -4
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -70238,7 +70246,6 @@ GameObject:
   m_Component:
   - component: {fileID: 346488425}
   - component: {fileID: 346488424}
-  - component: {fileID: 346488423}
   m_Layer: 0
   m_Name: p2Cam
   m_TagString: MainCamera
@@ -70246,14 +70253,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &346488423
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 346488422}
-  m_Enabled: 1
 --- !u!20 &346488424
 Camera:
   m_ObjectHideFlags: 0
@@ -70429,8 +70428,8 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1969754145
-  m_SortingLayer: -4
-  m_SortingOrder: 0
+  m_SortingLayer: -1
+  m_SortingOrder: 1
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -82021,7 +82020,6 @@ GameObject:
   m_Component:
   - component: {fileID: 566272066}
   - component: {fileID: 566272065}
-  - component: {fileID: 566272064}
   m_Layer: 0
   m_Name: p1Cam
   m_TagString: MainCamera
@@ -82029,14 +82027,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &566272064
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 566272063}
-  m_Enabled: 1
 --- !u!20 &566272065
 Camera:
   m_ObjectHideFlags: 0
@@ -82175,9 +82165,9 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 165312237
-  m_SortingLayer: -3
-  m_SortingOrder: 0
+  m_SortingLayerID: -1969754145
+  m_SortingLayer: -1
+  m_SortingOrder: 2
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
   m_MaxChunkCount: 16
@@ -97963,7 +97953,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1124503577
-  m_SortingLayer: -8
+  m_SortingLayer: -5
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -100923,6 +100913,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 834586877393105028, guid: 98e95b509ae4f534aa363657d0cce075, type: 3}
+      propertyPath: m_SortingLayer
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 834586877393105028, guid: 98e95b509ae4f534aa363657d0cce075, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 213490017
+      objectReference: {fileID: 0}
     - target: {fileID: 3343881563528887740, guid: 98e95b509ae4f534aa363657d0cce075, type: 3}
       propertyPath: m_Name
       value: WaterFrog
@@ -100967,7 +100965,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 7759908556383666770, guid: 98e95b509ae4f534aa363657d0cce075, type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7759908556383666770, guid: 98e95b509ae4f534aa363657d0cce075, type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7697574915625174482, guid: 98e95b509ae4f534aa363657d0cce075, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4999891776861304571, guid: 98e95b509ae4f534aa363657d0cce075, type: 3}
@@ -101088,8 +101095,8 @@ TilemapRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 213490017
-  m_SortingLayer: -5
+  m_SortingLayerID: -1969754145
+  m_SortingLayer: -1
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
@@ -108401,7 +108408,7 @@ TilemapRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -91856751
-  m_SortingLayer: -6
+  m_SortingLayer: -3
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
   m_ChunkCullingBounds: {x: 0, y: 0, z: 0}

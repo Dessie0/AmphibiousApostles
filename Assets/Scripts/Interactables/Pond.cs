@@ -7,6 +7,8 @@ namespace Interactables
     {
         public override void OnInteract(Frog frog)
         {
+            Debug.Log("Interacted by " + frog);
+            
             switch (frog)
             {
                 case WaterFrog waterFrog:

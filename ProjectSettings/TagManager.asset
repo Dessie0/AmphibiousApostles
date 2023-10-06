@@ -47,20 +47,11 @@ TagManager:
   - name: Foreground no-collide
     uniqueID: 4203110545
     locked: 0
-  - name: Foreground bottom
+  - name: Player
     uniqueID: 213490017
     locked: 0
-  - name: Foreground middle
+  - name: Foreground
     uniqueID: 2325213151
-    locked: 0
-  - name: Foreground top
-    uniqueID: 165312237
-    locked: 0
-  - name: Player
-    uniqueID: 233778663
-    locked: 0
-  - name: World
-    uniqueID: 1503042665
     locked: 0
   - name: Default
     uniqueID: 0

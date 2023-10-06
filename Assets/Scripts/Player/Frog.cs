@@ -1,11 +1,8 @@
 using System;
-using System.Runtime.CompilerServices;
 using Interactables;
 using Unity.VisualScripting;
-using UnityEditor.TerrainTools;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using Vector2 = UnityEngine.Vector2;
 
 namespace Player
 {
@@ -18,22 +15,23 @@ namespace Player
         public float speed = 0.3f;
         public LayerMask collisionMask;
         
-        private Rigidbody2D rig;
         private Vector2 direction;
         private Vector2 facing;
         private Vector2 targetPosition;
     
         private bool moving;
-    
+
+        private PlayerInput input;
+        
         // Start is called before the first frame update
         void Start()
         {
-            this.rig = this.GetComponent<Rigidbody2D>();
-            this.targetPosition = this.rig.position;
+            this.targetPosition = this.GetPosition();
+            this.input = this.GetComponent<PlayerInput>();
 
-            if (this.rig == null)
+            if (this.input == null)
             {
-                throw new Exception("Unable to find Rigidbody for Frog.");
+                throw new Exception("Cannot find PlayerInput component.");
             }
         }
 
@@ -41,22 +39,20 @@ namespace Player
         {
             this.moving = context.started || !context.canceled && this.moving;
             this.direction = context.ReadValue<Vector2>();
-            
-            if(!context.started) return;
 
             // Restrict diagonal movement
             this.RestrictDiagonal();
             
             // Rotate the player in the movement direction.
-            this.facing = this.direction;
-            float angle = Mathf.Atan2(this.facing.y, this.facing.x) * Mathf.Rad2Deg;
-            //Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
-            //transform.rotation = targetRotation;
+            if (!context.canceled)
+            {
+                this.facing = this.direction;
+            }
             
             //Check if there's a collider in front of the player.
             this.moving = CheckCanMove();
         }
-    
+        
         public void OnInteract(InputAction.CallbackContext context)
         {
             if (!context.started) return;
@@ -65,28 +61,27 @@ namespace Player
             
             Interactable interactable = hit.collider.gameObject.GetComponent<Interactable>();
             if(interactable == null) return;
-                
+            
             interactable.OnInteract(this);
         }
-
+        
         private void Update()
         {
             Vector2 position = this.transform.position;
             Debug.DrawRay(new Vector3(position.x, position.y, 1f), new Vector3(this.facing.x, this.facing.y, 1f), Color.red);
         }
-
+        
         private RaycastHit2D RaycastForward()
         {
-            Vector2 position = this.transform.position;
-            Vector2 origin = new Vector2(position.x, position.y);
+            Vector2 origin = this.GetPosition();
             return Physics2D.Raycast(origin, this.facing, 1f, this.collisionMask);
         }
-
+        
         private bool CheckCanMove()
         {
             return this.RaycastForward().collider == null;
         }
-
+        
         private void RestrictDiagonal()
         {
             if (this.direction.x == 0f || this.direction.y == 0f) return;
@@ -103,21 +98,28 @@ namespace Player
                 this.direction.y = Mathf.Round(this.direction.y);
             }
         }
+
+        private Vector2 GetPosition()
+        {
+            Vector2 position = this.transform.position;
+            return new Vector2(position.x, position.y);
+        }
         
         // Update is called once per frame
-        void FixedUpdate()
+        private void FixedUpdate()
         {
-            if (Vector2.Distance(this.rig.position, this.targetPosition) < this.gridThreshold)
+            Vector3 position = this.transform.position;
+            
+            if (Vector2.Distance(this.GetPosition(), this.targetPosition) < this.gridThreshold)
             {
-                this.rig.position = this.targetPosition;
+                this.transform.position = new Vector3(this.targetPosition.x, this.targetPosition.y, position.z);
                 
-                if (!this.moving) return;
-                this.RestrictDiagonal();
-                this.targetPosition = this.rig.position + new Vector2(this.direction.x, this.direction.y);
+                if(!this.moving || !this.CheckCanMove()) return;
+                this.targetPosition = this.GetPosition() + new Vector2(this.direction.x, this.direction.y);
             }
             else
             {
-                this.rig.position = Vector2.Lerp(this.rig.position, this.targetPosition, this.speed);
+                this.transform.position = Vector3.Lerp(position, new Vector3(this.targetPosition.x, this.targetPosition.y, position.z), this.speed);
             }
         }
         
