@@ -6,10 +6,9 @@ namespace Player
 {
     public class TadpoleFrog : Frog
     {
-        
+        [HideInInspector]
         public TadpoleManager tadpoleManager;
-
-
+        
         protected override void Start()
         {
             base.Start();

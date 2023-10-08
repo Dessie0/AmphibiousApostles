@@ -10,8 +10,9 @@ public class TadpoleManager : MonoBehaviour
     public GameObject defaultTadpole;
     public GameObject canvas;
     public Timer timer;
-    
-    private List<GameObject> tadpoleSprites = new();
+
+    [HideInInspector]
+    public List<Tadpole> tadpoleSprites = new();
 
     public void Start()
     {
@@ -45,7 +46,7 @@ public class TadpoleManager : MonoBehaviour
                 rectTransform.position = rectTransform.position + new Vector3(40f, y, 0f);
             }
             
-            this.tadpoleSprites.Add(duplicated);
+            this.tadpoleSprites.Add(duplicated.GetComponent<Tadpole>());
             
             y -= 50;
         }
