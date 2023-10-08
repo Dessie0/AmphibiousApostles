@@ -98,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c0dbf804d414561ace67bf43ba7058d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tadpoleSprite: {fileID: -2121240372, guid: 6e03891dded7cb04c9bdaa4cabd6b612, type: 3}
   hasTadpole: 0
   isWatered: 0
 --- !u!61 &7485299312089486102

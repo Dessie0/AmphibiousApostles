@@ -93,4 +93,4 @@ MonoBehaviour:
   - {fileID: -1874946098, guid: 6e03891dded7cb04c9bdaa4cabd6b612, type: 3}
   - {fileID: 394573872, guid: 6e03891dded7cb04c9bdaa4cabd6b612, type: 3}
   spriteStage: 0
-  renderer: {fileID: 5522205314188802512}
+  imageRenderer: {fileID: 5522205314188802512}
