@@ -42,7 +42,7 @@ public class Timer : MonoBehaviour
         text.text = $"{Mathf.Floor(this.timeLeft / 60)}:{(this.timeLeft % 60):00}";
 
         //Reload the scene if they lose.
-        if (this.timeLeft == 0)
+        if (this.timeLeft < 0)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
