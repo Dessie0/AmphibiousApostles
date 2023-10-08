@@ -47,9 +47,6 @@ TagManager:
   - name: Foreground no-collide
     uniqueID: 4203110545
     locked: 0
-  - name: Interactables
-    uniqueID: 3574728595
-    locked: 0
   - name: Player
     uniqueID: 213490017
     locked: 0
