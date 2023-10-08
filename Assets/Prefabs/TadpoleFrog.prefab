@@ -258,7 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridThreshold: 0.01
-  speed: 0.2
+  speed: 0.5
   collisionMask:
     serializedVersion: 2
     m_Bits: 704

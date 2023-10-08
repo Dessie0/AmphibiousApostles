@@ -213,7 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridThreshold: 0.01
-  speed: 0.2
+  speed: 0.5
   collisionMask:
     serializedVersion: 2
     m_Bits: 448
@@ -275,7 +275,7 @@ Animator:
   m_GameObject: {fileID: 3343881563528887740}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8abbf0d8f1c77544795ae35367fc4e4d, type: 2}
+  m_Controller: {fileID: 9100000, guid: e60e4fcc466cf354ca79ca3f5c126f5c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
