@@ -73571,11 +73571,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4999891776861304571, guid: 98e95b509ae4f534aa363657d0cce075, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.5
+      value: 36.5
       objectReference: {fileID: 0}
     - target: {fileID: 4999891776861304571, guid: 98e95b509ae4f534aa363657d0cce075, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.5
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 4999891776861304571, guid: 98e95b509ae4f534aa363657d0cce075, type: 3}
       propertyPath: m_LocalPosition.z
@@ -110323,6 +110323,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2923866915086783206, guid: 757575aa2386c8b42917101dca2f670a, type: 3}
+      propertyPath: waterStrength
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4433748789505211085, guid: 757575aa2386c8b42917101dca2f670a, type: 3}
       propertyPath: m_Name
       value: Pond (1)
@@ -110613,6 +110617,10 @@ PrefabInstance:
     - target: {fileID: 14428569359513790, guid: 757575aa2386c8b42917101dca2f670a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2923866915086783206, guid: 757575aa2386c8b42917101dca2f670a, type: 3}
+      propertyPath: waterStrength
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4433748789505211085, guid: 757575aa2386c8b42917101dca2f670a, type: 3}
       propertyPath: m_Name
