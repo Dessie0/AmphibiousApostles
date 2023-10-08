@@ -216,7 +216,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 448
   maxWater: 5
-  water: 0
+  water: 5
+  waterBar: {fileID: 0}
 --- !u!61 &7759908556383666770
 BoxCollider2D:
   m_ObjectHideFlags: 0

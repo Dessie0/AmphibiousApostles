@@ -70227,6 +70227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 433780360}
   - component: {fileID: 433780361}
+  - component: {fileID: 433780362}
   m_Layer: 5
   m_Name: WaterBar
   m_TagString: Untagged
@@ -70306,6 +70307,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &433780362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 433780359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3347e498d45b49449ae10378fe16070, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 433780361}
 --- !u!1 &518943951
 GameObject:
   m_ObjectHideFlags: 0
@@ -101187,6 +101201,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 759303602175800479, guid: 98e95b509ae4f534aa363657d0cce075, type: 3}
+      propertyPath: waterBar
+      value: 
+      objectReference: {fileID: 433780362}
     - target: {fileID: 834586877393105028, guid: 98e95b509ae4f534aa363657d0cce075, type: 3}
       propertyPath: m_SortingLayer
       value: -2
@@ -108754,7 +108772,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0016479492, y: 0}
+  m_AnchoredPosition: {x: 0.0017089844, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1296244157

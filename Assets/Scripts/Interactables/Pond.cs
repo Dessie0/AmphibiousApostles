@@ -10,7 +10,7 @@ namespace Interactables
             switch (frog)
             {
                 case WaterFrog waterFrog:
-                    waterFrog.water = waterFrog.maxWater;
+                    waterFrog.SetWater(waterFrog.maxWater);
                     break;
                 case TadpoleFrog tadpoleFrog:
                     Timer timer = FindObjectOfType<Timer>();
@@ -18,6 +18,8 @@ namespace Interactables
                     
                     break;
             }
+            
+            Destroy(this.gameObject);
         }
     }
 }

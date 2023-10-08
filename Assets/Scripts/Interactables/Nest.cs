@@ -1,4 +1,5 @@
 ﻿using Player;
+using UnityEngine;
 
 namespace Interactables
 {
@@ -13,11 +14,12 @@ namespace Interactables
             switch (frog)
             {
                 case WaterFrog waterFrog:
+                    if (!this.hasTadpole) break;
                     if (this.isWatered) break;
                     if (waterFrog.water < 0) break; 
                     
-                    this.isWatered = this.hasTadpole;
-                    waterFrog.water--;
+                    this.isWatered = true;
+                    waterFrog.UseWater(1);
                     
                     break;
                 case TadpoleFrog tadpoleFrog:
@@ -25,7 +27,7 @@ namespace Interactables
                     if (tadpoleFrog.tadpoles < 0) break; 
                     
                     this.hasTadpole = true;
-                    tadpoleFrog.tadpoles--;
+                    tadpoleFrog.UseTadpole();
                     break;
             }
             
