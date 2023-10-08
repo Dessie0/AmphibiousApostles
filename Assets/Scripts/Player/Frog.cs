@@ -4,6 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 namespace Player
 {
@@ -35,7 +36,7 @@ namespace Player
         private static readonly int Direction = Animator.StringToHash("Direction");
 
         // Start is called before the first frame update
-        void Start()
+        protected virtual void Start()
         {
             this.targetPosition = this.GetPosition();
             this.animator = this.GetComponent<Animator>();
@@ -77,6 +78,7 @@ namespace Player
         public void OnInteract(InputAction.CallbackContext context)
         {
             if (!context.started) return;
+            
             RaycastHit2D hit = this.RaycastForward();
             if (hit.collider == null) return;
             
