@@ -7,9 +7,6 @@ namespace Interactables
     {
         public bool hasTadpole;
         public bool isWatered;
-     
-        
-        
         
         public override void OnInteract(Frog frog)
         {
@@ -32,7 +29,6 @@ namespace Interactables
                     tadpoleFrog.UseTadpole();
                     break;
             }
-            
         }
     }
 }

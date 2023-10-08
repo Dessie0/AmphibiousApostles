@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5326388806242070956}
   - component: {fileID: 7522785722588864900}
   - component: {fileID: 5522205314188802512}
+  - component: {fileID: -6995314866453261163}
   m_Layer: 5
   m_Name: TadpoleUI
   m_TagString: Untagged
@@ -75,3 +76,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &-6995314866453261163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1769200652813166880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fb296b1840d4e1fa3732e7f7d110b1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteStages:
+  - {fileID: -2121240372, guid: 6e03891dded7cb04c9bdaa4cabd6b612, type: 3}
+  - {fileID: -1874946098, guid: 6e03891dded7cb04c9bdaa4cabd6b612, type: 3}
+  - {fileID: 394573872, guid: 6e03891dded7cb04c9bdaa4cabd6b612, type: 3}
+  spriteStage: 0
+  renderer: {fileID: 5522205314188802512}
