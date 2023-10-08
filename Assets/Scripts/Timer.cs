@@ -20,7 +20,6 @@ public class Timer : MonoBehaviour
         {
             throw new Exception("No display output for text.");
         }
-        
     }
 
     public void AddSeconds(float seconds)
@@ -32,6 +31,6 @@ public class Timer : MonoBehaviour
     {
         if (!timerRunning) return;
         this.timeLeft -= Time.deltaTime;
-        text.text = $"{Mathf.Floor(this.timeLeft / 60)}:{Math.Floor(this.timeLeft % 60)}";
+        text.text = $"{Mathf.Floor(this.timeLeft / 60)}:{(this.timeLeft % 60):00}";
     }
 }

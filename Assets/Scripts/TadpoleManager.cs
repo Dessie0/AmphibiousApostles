@@ -1,16 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class TadpoleManager : MonoBehaviour
 {
-    public int numTadpoles;
+    //How many tadpoles the Tadpole frog is carrying
+    public int tadpoles = 5;
+    
     public GameObject defaultTadpole;
     public GameObject canvas;
     public Timer timer;
     
-    private List<GameObject> tadpoles = new();
+    private List<GameObject> tadpoleSprites = new();
 
     public void Start()
     {
@@ -19,21 +20,20 @@ public class TadpoleManager : MonoBehaviour
             throw new Exception("No canvas!");
         }
         
-        this.SetValue(this.numTadpoles);
+        this.UpdateSprites();
     }
     
-    public void SetValue(int value)
+    public void UpdateSprites()
     {
-        foreach(var tadpole in this.tadpoles)
+        foreach(var tadpole in this.tadpoleSprites)
         {
             Destroy(tadpole.gameObject);
         }
         
-        this.tadpoles.Clear();
-        this.numTadpoles = value;
+        this.tadpoleSprites.Clear();
         
         float y = 100;
-        for (var i = 0; i < numTadpoles; i++)
+        for (var i = 0; i < this.tadpoles; i++)
         {
             GameObject duplicated = Instantiate(defaultTadpole, canvas.transform, false);
 
@@ -45,7 +45,7 @@ public class TadpoleManager : MonoBehaviour
                 rectTransform.position = rectTransform.position + new Vector3(40f, y, 0f);
             }
             
-            this.tadpoles.Add(duplicated);
+            this.tadpoleSprites.Add(duplicated);
             
             y -= 50;
         }

@@ -7,13 +7,7 @@ namespace Player
     public class TadpoleFrog : Frog
     {
         
-        //How many tadpoles the Tadpole frog can carry
-        public int maxTadpoles = 5;
-        
-        //How many tadpoles the Tadpole frog is carrying
-        public int tadpoles;
-
-        private TadpoleManager tadpoleManager;
+        public TadpoleManager tadpoleManager;
 
 
         protected override void Start()
@@ -29,9 +23,9 @@ namespace Player
 
         public void UseTadpole()
         {
-            this.tadpoles--;
-            this.tadpoleManager.SetValue(this.tadpoles);
-        } 
+            this.tadpoleManager.tadpoles--;
+            this.tadpoleManager.UpdateSprites();
+        }
         
     }
 }
