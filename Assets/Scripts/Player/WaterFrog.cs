@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using Interactables;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,8 +16,7 @@ namespace Player
         public float water;
 
         public WaterBar waterBar;
-
-
+        
         protected override void Start()
         {
             base.Start();

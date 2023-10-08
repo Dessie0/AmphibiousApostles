@@ -1,4 +1,6 @@
-﻿using Player;
+﻿using System;
+using Player;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Interactables
@@ -7,9 +9,6 @@ namespace Interactables
     {
         public bool hasTadpole;
         public bool isWatered;
-     
-        
-        
         
         public override void OnInteract(Frog frog)
         {
@@ -26,13 +25,12 @@ namespace Interactables
                     break;
                 case TadpoleFrog tadpoleFrog:
                     if (this.hasTadpole) break;
-                    if (tadpoleFrog.tadpoleManager.tadpoles < 0) break; 
+                    if (tadpoleFrog.tadpoleManager.tadpoles < 0) break;
                     
                     this.hasTadpole = true;
                     tadpoleFrog.UseTadpole();
                     break;
             }
-            
         }
     }
 }
