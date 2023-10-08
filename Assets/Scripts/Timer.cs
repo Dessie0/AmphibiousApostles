@@ -23,7 +23,7 @@ public class Timer : MonoBehaviour
         this.frog = FindObjectOfType<TadpoleFrog>();
         this.timeLeft = this.startingSeconds;
         this.nests = new List<Nest>(FindObjectsOfType<Nest>());
-
+        
         if (text == null)
         {
             throw new Exception("No display output for text.");
@@ -53,34 +53,42 @@ public class Timer : MonoBehaviour
             {
                 tadpole.spriteStage = 1;
             } 
-        }
-
-        if (this.timeLeft < (float) this.startingSeconds / 4)
+        } else if (this.timeLeft < (float) this.startingSeconds / 4)
         {
             foreach (var tadpole in this.frog.tadpoleManager.tadpoleSprites)
             {
                 tadpole.spriteStage = 2;
             } 
         }
-        
-        //Check if they won
-        foreach (var nest in this.nests)
+        else
         {
-            if(!nest.hasTadpole || !nest.isWatered) continue;
-            
-            //Otherwise they won the level
-            String activeScene = SceneManager.GetActiveScene().name;
-
-            switch (activeScene) 
+            foreach (var tadpole in this.frog.tadpoleManager.tadpoleSprites)
             {
-                case "Level1": SceneManager.LoadScene("Level2");
-                    break;
-                case "Level2": SceneManager.LoadScene("Level3");
-                    break;
-                case "Level3": SceneManager.LoadScene("GameOver");
-                    break;
-            }
+                tadpole.spriteStage = 0;
+            } 
         }
         
+        //Check if they won
+        bool shouldWin = true;
+        foreach (var nest in this.nests)
+        {
+            shouldWin = nest.isWatered && nest.hasTadpole;
+            if (!shouldWin) break;
+        }
+        
+        //Otherwise they won the level
+        if (!shouldWin) return;
+        
+        String activeScene = SceneManager.GetActiveScene().name;
+
+        switch (activeScene) 
+        {
+            case "Level1": SceneManager.LoadScene("Level2");
+                break;
+            case "Level2": SceneManager.LoadScene("Level3");
+                break;
+            case "Level3": SceneManager.LoadScene("GameOver");
+                break;
+        }
     }
 }
