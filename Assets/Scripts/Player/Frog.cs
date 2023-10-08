@@ -1,10 +1,7 @@
 using System;
 using Interactables;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 namespace Player
 {
@@ -13,12 +10,11 @@ namespace Player
         
         //How close the player must be to the grid to be completed.
         [SerializeField]
-        private float gridThreshold = 0.01f;
+        private float gridThreshold = 0.03f;
         public float speed = 0.3f;
         public LayerMask collisionMask;
         
         private Vector2 direction;
-        private Vector2 facing;
         private Vector2 targetPosition;
     
         private Animator animator;
@@ -26,12 +22,19 @@ namespace Player
 
         //Used in the editor for an animation event, tells the sprite when to actually move during the animation.
         private bool animationToggle;
+        
+        //Tracks if the player has enter an input, and whether the player is within the animation.
+        //During the animation, the player cannot change the direction.
+        private bool isMoving;
 
+        //Tracks if the player is holding down a movement key
+        private bool isHoldingButton;
+        
         //Used to track if the sprite should be flipped.
         //Cannot use facing as facing will flip the sprite when they move down.
         private bool isLookingLeft;
         
-        private bool moving;
+        
         private static readonly int IsMoving = Animator.StringToHash("IsMoving");
         private static readonly int Direction = Animator.StringToHash("Direction");
 
@@ -55,22 +58,25 @@ namespace Player
 
         public void OnMove(InputAction.CallbackContext context)
         {
-            this.moving = context.started || !context.canceled && this.moving;
+            //Check if they're holding the button down.
+            this.isHoldingButton = context.started || !context.canceled && this.isHoldingButton;
+            
+            if (!context.started) return;
+            if (this.isMoving) return;
+            
+            
             this.direction = context.ReadValue<Vector2>();
-
+            
             // Restrict diagonal movement
             this.RestrictDiagonal();
             
-            // Rotate the player in the movement direction.
-            if (!context.canceled)
-            {
-                this.facing = this.direction;
-            }
-            
             //Set the animation bool if they're moving up so the appropriate animation plays.
-            this.animator.SetBool(IsMoving, this.moving);
-            this.animator.SetInteger(Direction, Math.Abs(this.facing.y - 1f) < 0.01 ? 1 : 0);
+            this.animator.SetBool(IsMoving, true);
+            this.animator.SetInteger(Direction, Math.Abs(this.direction.y - 1f) < 0.01 ? 1 : 0);
             
+            //We are now moving so don't accept any more inputs.
+            this.isMoving = true;
+                
             //Flip the sprite
             this.spriteRenderer.flipX = Math.Abs(this.direction.x - -1f) < 0.01 || !(Math.Abs(this.direction.x - 1) < 0.01) && this.spriteRenderer.flipX;
         }
@@ -91,13 +97,13 @@ namespace Player
         private void Update()
         {
             Vector2 position = this.transform.position;
-            Debug.DrawRay(new Vector3(position.x, position.y, 1f), new Vector3(this.facing.x, this.facing.y, 1f), Color.red);
+            Debug.DrawRay(new Vector3(position.x, position.y, 1f), new Vector3(this.direction.x, this.direction.y, 1f), Color.red);
         }
         
         private RaycastHit2D RaycastForward()
         {
             Vector2 origin = this.GetPosition();
-            return Physics2D.Raycast(origin, this.facing, 1f, this.collisionMask);
+            return Physics2D.Raycast(origin, this.direction, 1f, this.collisionMask);
         }
         
         private bool CheckCanMove()
@@ -137,23 +143,17 @@ namespace Player
             //Check if the player has reached their target position of the next tile
             if (Vector2.Distance(this.GetPosition(), this.targetPosition) < this.gridThreshold)
             {
+                //Tell the script that we've locked the frog into place and another movement can be inputted.
+                this.isMoving = false;
+                
+                //Turn off the animation toggle, since the animation ended.
+                this.animationToggle = false;
+                
                 //Lock the position to the tile
                 this.transform.position = new Vector3(this.targetPosition.x, this.targetPosition.y, position.z);
                 
-                //Check if they're still moving, or if they even CAN move in the first place
-                if(!this.moving || !this.CheckCanMove())
-                {
-                    this.moving = false;
-                    this.animator.SetBool(IsMoving, false);
-                }
-                else
-                {
-
-                    this.animationToggle = false;
-                    
-                    //Otherwise, set the next target position.
-                    this.targetPosition = this.GetPosition() + new Vector2(this.direction.x, this.direction.y);
-                }
+                //Stop the animation.
+                this.animator.SetBool(IsMoving, false);
             }
             else
             {
@@ -161,13 +161,20 @@ namespace Player
                 this.transform.position = Vector3.Lerp(position, new Vector3(this.targetPosition.x, this.targetPosition.y, position.z), this.speed);
             }
         }
-
-
+        
         private void AnimationShouldMove()
         {
+            if (this.animationToggle) return;
+            
             this.animationToggle = true;
+            this.targetPosition = this.GetPosition() + new Vector2(this.direction.x, this.direction.y);
         }
-        
-        
+
+        private void StopAnimation()
+        {
+            this.isMoving = false;
+            this.animationToggle = false;
+            this.animator.SetBool(IsMoving, false);
+        }
     }
 }

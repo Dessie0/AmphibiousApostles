@@ -257,12 +257,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gridThreshold: 0.01
-  speed: 0.2
+  speed: 0.5
   collisionMask:
     serializedVersion: 2
     m_Bits: 704
-  maxTadpoles: 5
-  tadpoles: 5
+  tadpoleManager: {fileID: 0}
 --- !u!114 &-2263812081932507568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,10 +274,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8e0a05062c741d29b11e8bfb726746b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numTadpoles: 5
+  tadpoles: 5
   defaultTadpole: {fileID: 1769200652813166880, guid: 925917ff018f472498d3b5674eaf5c6e, type: 3}
-  uiElement: {fileID: 0}
+  canvas: {fileID: 0}
   timer: {fileID: 6568470507333508301, guid: f1fb3fe0853ee0849b2c0a9b146172b5, type: 3}
+  tadpoleSprites: []
 --- !u!95 &-2650835776997141296
 Animator:
   serializedVersion: 5

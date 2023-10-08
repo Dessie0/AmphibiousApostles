@@ -14,6 +14,8 @@ namespace Interactables
             switch (frog)
             {
                 case WaterFrog waterFrog:
+                    if (waterFrog.water >= waterFrog.maxWater) return;
+                    
                     waterFrog.SetWater(waterFrog.water + this.waterStrength);
                     break;
                 case TadpoleFrog:
