@@ -7,16 +7,16 @@ public class TadpoleManager : MonoBehaviour
 {
     public int numTadpoles;
     public GameObject defaultTadpole;
-    public GameObject uiElement;
+    public GameObject canvas;
     public Timer timer;
     
     private List<GameObject> tadpoles = new();
 
     public void Start()
     {
-        if (uiElement == null)
+        if (canvas == null)
         {
-            throw new Exception("No UI element!");
+            throw new Exception("No canvas!");
         }
         
         this.SetValue(this.numTadpoles);
@@ -31,8 +31,6 @@ public class TadpoleManager : MonoBehaviour
         
         this.tadpoles.Clear();
         this.numTadpoles = value;
-
-        GameObject canvas = uiElement.transform.parent.gameObject;
         
         float y = 100;
         for (var i = 0; i < numTadpoles; i++)
